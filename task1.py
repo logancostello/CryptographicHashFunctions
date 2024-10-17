@@ -50,8 +50,16 @@ def findCollision(numBits):
         else:
             hashes[hashed_value] = randomString
 
+def findAllCollisions():
+    times = []
+    attempted = []
+    for i in range(8, 52, 2):
+        res = findCollision(i)
+        times.append(res[3])
+        attempted.append(res[2])
+    print(f"Times: {times}")
+    print(f"Num Strings Attempted: {attempted}")
+
 if __name__ == '__main__':
-    findCollision(8)
-    findCollision(10)
-    findCollision(12)
+    findAllCollisions()
 
