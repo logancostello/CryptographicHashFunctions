@@ -1,6 +1,9 @@
 import time
+import bcrypt
+from nltk.corpus import words
+import datetime
 
-users = {
+passwords = {
     "Bilbo": "$2b$08$J9FW66ZdPI2nrIMcOxFYI.qx268uZn.ajhymLP/YHaAsfBGP3Fnmq",
     "Gandalf": "$2b$08$J9FW66ZdPI2nrIMcOxFYI.q2PW6mqALUl2/uFvV9OFNPmHGNPa6YC",
     "Thorin": "$2b$08$J9FW66ZdPI2nrIMcOxFYI.6B7jUcPdnqJz4tIUwKBu8lNMs5NdT9q",
@@ -17,3 +20,46 @@ users = {
     "Bofur": "$2b$12$rMeWZtAVcGHLEiDNeKCz8Ose2KNe821.l2h5eLffzWoP01DlQb72O",
     "Durin": "$2b$13$6ypcazOOkUT/a7EwMuIjH.qbdqmHPDAC9B5c37RT9gEw18BX6FOay"
 }
+
+users = ["Bilbo", "Gandalf", "Thorin", "Fili", "Kili", "Balin", "Dwalin", "Oin", "Gloin", "Dori", "Nori", "Ori", "Bifur", "Bofur", "Durin"]
+
+def findPassword(user):
+    print(f"Cracking {user}'s password...")
+    startTime = time.time()
+    datetime_object = datetime.datetime.fromtimestamp(startTime)
+    readable_time = datetime_object.strftime("%Y-%m-%d %H:%M:%S")[11:]
+    print(f"Start time: {readable_time}")
+    targetValue = passwords[user].encode("utf-8")
+    password = None
+    for word in words.words():
+        if 6 <= len(word) <= 10:
+            password = word
+            word = word.encode('utf-8')
+            eq = bcrypt.checkpw(word, targetValue)
+            if eq:
+                break
+
+    endTime = time.time()
+    totalTime = endTime - startTime
+    timeInMins = round(totalTime / 60, 2)
+    print(f"{user}'s password: {password}")
+    print(f"Took {timeInMins} minutes to crack")
+    print()
+    return timeInMins
+
+def findAllPasswords(startIdx, endInx):
+    times = []
+    for user in users[startIdx:endInx]:
+        t = findPassword(user)
+        times.append(t)
+    print(times)
+
+if __name__ == '__main__':
+    findAllPasswords(1, 3)
+
+# Times (minutes):
+# Bilbo: 43.5
+
+
+
+
