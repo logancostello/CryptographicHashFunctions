@@ -55,10 +55,12 @@ def findAllPasswords(startIdx, endInx):
     print(times)
 
 if __name__ == '__main__':
-    findAllPasswords(1, 3)
+    findAllPasswords(3, 8)
 
 # Times (minutes):
 # Bilbo: 43.5
+# Gandalf: 9.82
+# Thorin: 9.82
 
 
 
