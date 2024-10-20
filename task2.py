@@ -56,7 +56,7 @@ def findAllPasswords(startIdx, endInx):
 
 if __name__ == '__main__':
     # findAllPasswords(7, 15)
-    # findPassword("Thorin")
+    findPassword("Ori")
 
 # Times (minutes):
 # Bilbo: 43.5
@@ -69,6 +69,8 @@ if __name__ == '__main__':
 # Oin: 71.59
 # Glorin: 194.92
 # Dori: 137.51
+# Nori: 280.84
+
 
 
 
