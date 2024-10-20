@@ -72,6 +72,10 @@ if __name__ == '__main__':
 # Nori: 280.84
 # Ori: 13.48
 
+# Different computer 
+# Bifur: 79.14
+# Bofur: 185.57
+# Durin 542.09 
 
 
 
