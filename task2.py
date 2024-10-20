@@ -70,6 +70,7 @@ if __name__ == '__main__':
 # Glorin: 194.92
 # Dori: 137.51
 # Nori: 280.84
+# Ori: 13.48
 
 
 
